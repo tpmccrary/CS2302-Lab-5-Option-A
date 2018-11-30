@@ -66,9 +66,14 @@ def build_min_heap(input_list):
 
 # Function that stores data from a file into a list. File contents must be separated by commas.
 def file_to_list(file_name):
-    file = open(file_name)
     int_list = []
     empty_list = []
+
+    try:
+        file = open(file_name)
+    except FileNotFoundError:
+        print('ERROR: File does not exist.')
+        return empty_list
 
     for line in file:
         string_list = line.split(", ")
